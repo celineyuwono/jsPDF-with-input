@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>CS Form</title>
+		<meta http-equiv="Content-Type" content="text/html: charset=UTF-8" />
+		<script type="text/javascript" src="jspdf.min.js"></script>
+		<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+		<script type="text/javascript"> 
+			function genPDF(){
+			
+			var doc = new jsPDF();
+			
+			var teamName = $('#userInput').find('input[name="teamName"]').val();
+			var teamNumber = $('#userInput').find('input[name="teamNumber"]').val();
+			
+			doc.setFontSize(40);
+			doc.text(25,50,"Contest Cover Page");
+			doc.setFontSize(20);
+			doc.text(25,150,"Please deliver to:");
+			doc.text(25,165,teamName+" ("+teamNumber+")")
+			doc.save('team-cover.pdf');
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="userInput">
+			<p>Enter Team Name: </p>
+			<input type="text" id="teamName" name="teamName"></input>
+			<p>Enter Team Number: </p>
+			<input type="text" id="teamNumber" name="teamNumber"></input>
+			<br><br><br>
+			<button onclick="genPDF()">Generate PDF</button>
+		</div>
+
+	</body>
+	
